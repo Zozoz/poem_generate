@@ -52,3 +52,4 @@ def rnn_model(model, input_data, seq_len, output_data, vocab_size, rnn_size=128,
         end_point['initial_state'] = initial_state
         end_point['last_state'] = last_state
         end_point['prediction'] = prediction
+    return end_point
