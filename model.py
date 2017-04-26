@@ -7,7 +7,7 @@
 import tensorflow as tf
 
 
-def rnn_model(model, input_data, output_data, vocab_size, rnn_size=128, num_layers=2, batch_size=64, lr=0.01):
+def rnn_model(model, input_data, seq_len, output_data, vocab_size, rnn_size=128, num_layers=2, batch_size=64, lr=0.01):
     end_point = {}
     if model == 'rnn':
         cell_fun = tf.contrib.rnn.BasicRNNCell
@@ -28,7 +28,7 @@ def rnn_model(model, input_data, output_data, vocab_size, rnn_size=128, num_laye
         embedding = tf.get_variable('embedding', initializer=tf.random_uniform([vocab_size + 1, rnn_size], -1.0, 1.0))
         inputs = tf.nn.embedding_lookup(embedding, input_data)
 
-    outputs, last_state = tf.nn.dynamic_rnn(cell, inputs, initial_state=initial_state)
+    outputs, last_state = tf.nn.dynamic_rnn(cell, inputs, seq_len, initial_state=initial_state)
     outputs = tf.reshape(outputs, [-1, rnn_size])
 
     weights = tf.get_variable('weight', initializer=tf.truncated_normal([rnn_size, vocab_size + 1]))

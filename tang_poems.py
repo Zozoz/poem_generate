@@ -36,8 +36,8 @@ def run_training():
     y = tf.placeholder(tf.int32, [None, 80])
     l = tf.placeholder(tf.int32, [None])
 
-    end_point = rnn_model(model='lstm', input_data=x, output_data=y, vocab_size=len(words), rnn_size=128,
-                          num_layers=2, batch_size=64, lr=FLAGS.lr)
+    end_point = rnn_model(model='lstm', input_data=x, seq_len=l, output_data=y, vocab_size=len(words),
+                          rnn_size=128, num_layers=2, batch_size=64, lr=FLAGS.lr)
 
     saver = tf.train.Saver(tf.global_variables())
     init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())

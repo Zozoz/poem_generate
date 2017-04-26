@@ -48,8 +48,8 @@ def batch(batch_size, poems_vec, word2id):
         batches = poems_vec[s:e]
         x_batch = np.zeros((batch_size, 80))
         len_batch = []
-        for j in range(len(poems_vec)):
-            x_batch[i, :len(batches[j])] = batches[j]
+        for j in range(batch_size):
+            x_batch[j, :len(batches[j])] = batches[j]
             len_batch.append(len(batches[j]))
         y_batch = np.copy(x_batch)
         y_batch[:, :-1] = x_batch[:, 1:]
