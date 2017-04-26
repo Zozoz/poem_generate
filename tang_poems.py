@@ -85,7 +85,7 @@ def gen_poem(begin_word):
         while word != end_token:
             poem += word
             predict, last_state = sess.run([end_point['prediction'], end_point['last_state']],
-                                           feed_dict={x: word2id.get(word, 0),
+                                           feed_dict={x: np.array([list(map(word2id.get, word))]),
                                                       end_point['initial_state']: last_state})
             word = to_word(predict, words)
 
