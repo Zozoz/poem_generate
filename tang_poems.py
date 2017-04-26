@@ -78,7 +78,7 @@ def gen_poem(begin_word):
         saver.restore(sess, checkpoint)
 
         predict, last_state = sess.run([end_point['prediction'], end_point['last_state']],
-                                       feed_dict={x: map(word2id.get, start_token)})
+                                       feed_dict={x: np.array([list(map(word2id.get, start_token))])})
 
         poem = ''
         word = begin_word
