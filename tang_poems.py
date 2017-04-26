@@ -15,7 +15,7 @@ from utils import process_poems, batch
 tf.app.flags.DEFINE_integer('batch_size', 64, 'batch size')
 tf.app.flags.DEFINE_float('lr', 0.01, 'learning rate')
 
-tf.app.flags.DEFINE_string('checkpoints_dir', './checkpoints/poems/', 'checkpoints save path')
+tf.app.flags.DEFINE_string('checkpoints_dir', './checkpoints/', 'checkpoints save path')
 tf.app.flags.DEFINE_string('train_file', './data/poems.txt', 'train file path')
 tf.app.flags.DEFINE_string('model_prefix', 'poems', 'model save prefix')
 

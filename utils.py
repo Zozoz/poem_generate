@@ -20,7 +20,7 @@ def process_poems(file_name):
     for line in open(file_name):
         title, content = line.decode('utf8').strip().split(':')
         content = content.replace(' ', '')
-        if len(content) < 5 or len(content) > 79:
+        if len(content) < 5 or len(content) > 78:
             continue
         content = start_token + content + end_token
         poems.append(content)
