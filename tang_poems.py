@@ -53,7 +53,7 @@ def run_training():
         for epoch in range(start_epoch, FLAGS.epochs):
             for x_batch, l_batch, y_batch in batch(FLAGS.batch_size, poems_vec, word2id):
                 loss, _, _ = sess.run([end_point['total_loss'], end_point['last_state'], end_point['train_op']],
-                                      feed_dict={x: x_batch, y: y_batch})
+                                      feed_dict={x: x_batch, y: y_batch, l: l_batch})
                 print '[INFO] Epoch: {}, training loss: {}'.format(epoch, loss)
             if epoch % 5 == 0:
                 saver.save(sess, os.path.join(FLAGS.checkpoints_dir, FLAGS.model_prefix), global_step=epoch)
