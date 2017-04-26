@@ -66,7 +66,7 @@ def gen_poem(begin_word):
 
     x = tf.placeholder(tf.int32, [batch_size, None])
 
-    end_point = rnn_model(model='lstm', input_data=x, output_data=None, vocab_size=len(words), rnn_size=128,
+    end_point = rnn_model(model='lstm', input_data=x, seq_len=[1], output_data=None, vocab_size=len(words), rnn_size=128,
                           num_layers=2, batch_size=64, lr=FLAGS.lr)
 
     saver = tf.train.Saver(tf.global_variables())
