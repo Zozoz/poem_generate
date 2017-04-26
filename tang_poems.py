@@ -21,6 +21,8 @@ tf.app.flags.DEFINE_string('model_prefix', 'poems', 'model save prefix')
 
 tf.app.flags.DEFINE_integer('epochs', 50, 'training epochs')
 
+tf.app.flags.DEFINE_string('is_train', 'yes', 'training or generating')
+
 FLAGS = tf.app.flags.FLAGS
 
 start_token = 'G'
@@ -106,8 +108,8 @@ def print_poem(poems):
             print poem + u'。'
 
 
-def main(is_train):
-    if is_train:
+def main(_):
+    if FLAGS.is_train == 'yes':
         print '[INFO] train poem...'
         run_training()
     else:
